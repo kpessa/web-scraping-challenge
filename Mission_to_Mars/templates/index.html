@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission to Mars</title>
+    {% include 'bootstrap.html' %}
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1 class="display-4">Mission to Mars</h1>
+      <a class="btn btn-primary btn-lg" href="/scrape">Scrape New Data</a>
+    </div>
+    <div class="container-fluid">
+      <h2>Latest Mars News</h2>
+      <h3>{{ mars.news_title }}</h3>
+      <p>{{ mars.news_p }}</p>
+
+      <div class="row">
+        <div class="col-8">
+          <h2>Featured Mars Image</h2>
+          <img
+            src="{{mars.featured_image_url | default('static/images/error.png', true) }}"
+            style="width: 100%"
+            alt="Responsive image"
+          />
+        </div>
+        <div class="col-4">
+          <div class="border p-3">
+            <h3>Current Weather on Mars</h3>
+            <p>{{ mars.mars_weather }}</p>
+          </div>
+          <div>
+            <h4>Mars Facts</h4>
+            {{ mars.html_string | safe}}
+          </div>
+        </div>
+      </div>
+      <div class="container text-center mt-5">
+        <h4>Mars Hemispheres</h4>
+      </div>
+      <div class="row m-3 justify-content-center">
+        {% for hemisphere in mars.hemisphere_image_urls %}
+        <div class="col-md-5 thumbnail text-center border p-3 m-2">
+          <img
+            class="img-responsive"
+            src="{{ hemisphere.img_url }}"
+            alt="Image"
+            style="width: 100%"
+          />
+          <div class="caption" style="font-weight: bold; padding-top: 10px;">{{ hemisphere.title }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
