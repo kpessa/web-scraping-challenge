@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .virtual_documents
+Instructions/
 
 # C extensions
 *.so

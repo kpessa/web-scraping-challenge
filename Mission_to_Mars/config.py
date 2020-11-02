@@ -1,1 +1,1 @@
-path_to_chromedriver = "c:/Git/chromedriver/chromedriver.exe"
+path_to_chromedriver = "chromedriver.exe"
